@@ -17,10 +17,21 @@ public class Main {
 		int num1,num2;
 		
 		Scanner sc = new Scanner(System.in);
+		
 		System.out.print("Número 1: ");
+		while(!sc.hasNextInt()) {
+			System.out.print("Número1 no es un entero. Dame número: ");
+			sc.next();
+		}
 		num1 = sc.nextInt();
+			
 		System.out.print("Número 2: ");
+		while(!sc.hasNextInt()) {
+			System.out.print("Número2 no es un entero. Dame número: ");
+			sc.next();
+		}
 		num2 = sc.nextInt();
+		
 		sc.close();
 		
 		
@@ -31,10 +42,10 @@ public class Main {
 		// (b) Algoritmo Ecuclides. Metodo division euclidiana
 		
 		// (b.1) Iterativo.
-		mcd1 = euclidesDivisiones(mayor(num1,num2),menor(num1,num2));
+		mcd1 = euclidesDivisiones(num1,num2);
 		
 		// (b.2) Recursivo
-		mcd2 = euclidesDivisionesRec(mayor(num1,num2),menor(num1,num2));	
+		mcd2 = euclidesDivisionesRec(num1,num2);	
 
 		
 		
@@ -48,16 +59,20 @@ public class Main {
 	private static int euclidesRestas(int num1, int num2) {
 		while(num1 != num2) {
 			
-			if(num1 > num2) {
+			if(num1 > num2) 
 				num1 = num1 - num2;
-			} else {
+			else 
 				num2 = num2 - num1;
-			}
+			
 		}
 		return num1;
 	}
 	
-	private static int euclidesDivisiones(int dividendo, int divisor) {
+	private static int euclidesDivisiones(int num1, int num2) {
+		
+		// Dividendo es el mayor de ambos números y divisor el menor
+		int dividendo =  num1 >= num2 ? num1 :num2;
+		int divisor =  num1 < num2 ? num1 : num2;
 				
 		while (divisor != 0) {
 		
@@ -72,7 +87,12 @@ public class Main {
 	
 	// Vesión del método euclidesDivisiones realizado con método recursivo
 
-	private static int euclidesDivisionesRec(int dividendo, int divisor) {
+	private static int euclidesDivisionesRec(int num1, int num2) {
+		
+		// Dividendo es el mayor de ambos números y divisor el menor
+
+		int dividendo =  num1 >= num2 ? num1 :num2;
+		int divisor =  num1 < num2 ? num1 : num2;
 
 		if(divisor == 0) return dividendo;
 		
@@ -80,13 +100,4 @@ public class Main {
 	}
 
 	
-	
-	static int mayor(int a, int b) {
-		return a >= b ? a : b;
-	}
-	
-	static int menor(int a, int b) {
-		return a <= b ? a : b; 
-	}
-
 }
