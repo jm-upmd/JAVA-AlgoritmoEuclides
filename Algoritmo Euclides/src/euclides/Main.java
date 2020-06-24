@@ -92,12 +92,10 @@ public class Main {
 		// Dividendo es el mayor de ambos números y divisor el menor
 
 		int dividendo =  num1 >= num2 ? num1 :num2;
-		int divisor =  num1 < num2 ? num1 : num2;
+		int divisor = num1 < num2 ? num1 : num2;
 
 		if(divisor == 0) return dividendo;
 		
 		return euclidesDivisionesRec(divisor, dividendo % divisor);
 	}
-
-	
 }
